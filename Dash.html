@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SafeSpace - Dashboard</title>
+  <link rel="stylesheet" href="Dash.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="logo">
+      SAFE<span class="green">SPACE</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#"><i class="icon"></i> Dashboard</a></li>
+        <li class="features-title">FEATURES</li>
+        <li><a href="#"><i class="icon"></i> UI Colours</a></li>
+        <li><a href="#"><i class="icon"></i> Counselors</a></li>
+        <li><a href="#"><i class="icon"></i> Community</a></li>
+        <li><a href="#"><i class="icon"></i> Subscription</a></li>
+        <li><a href="#"><i class="icon"></i> Resources</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="main-content" id="main-content">
+    <header class="main-header">
+      <div class="menu-icon" id="menu-toggle">☰</div>
+      <div class="user-info">
+        <i class="icon"></i> Syntax Squad
+      </div>
+    </header>
+
+    <div class="dashboard-body">
+      <div class="breadcrumb">Home / Dashboard</div>
+
+      <h1>Dashboard</h1>
+
+      <section class="pending">
+        <h2>Pending Appointments</h2>
+        <p>No appointments pending</p>
+      </section>
+
+      <section class="counselors">
+        <div class="counselors-header">
+          <h2>Your Counselors</h2>
+          <a href="#">See All...</a>
+        </div>
+
+        <div class="counselor-list">
+          <div class="counselor-card">
+            <div class="avatar"></div>
+            <h3>Prosperity Ajoke</h3>
+            <p>General Counseling</p>
+            <button class="message-btn">Message</button>
+          </div>
+          <div class="counselor-card">
+            <div class="avatar"></div>
+            <h3>John Mahma</h3>
+            <p>Psychiatry</p>
+            <button class="message-btn">Message</button>
+          </div>
+          <div class="counselor-card">
+            <div class="avatar"></div>
+            <h3>Lawrence Dominion</h3>
+            <p>General Counseling</p>
+            <button class="message-btn">Message</button>
+          </div>
+          <div class="counselor-card">
+            <div class="avatar"></div>
+            <h3>Lawrence D.</h3>
+            <p>General Counseling</p>
+            <button class="message-btn">Message</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
