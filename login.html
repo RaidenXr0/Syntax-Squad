@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="login-style.css">
+  <script>
+    function validateLoginForm(event) {
+      event.preventDefault();
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const errorBox = document.getElementById("error-box");
+
+      if (!email || !password) {
+        showError("Please fill in all fields.");
+        return false;
+      }
+
+      if (!email.includes("@") || !email.includes(".")) {
+        showError("Please enter a valid email address.");
+        return false;
+      }
+
+      showLoading();
+      setTimeout(() => {
+        alert("Login successful (mock)");
+        window.location.href = "dashboard.html";
+      }, 1500);
+    }
+
+    function showError(message) {
+      const errorBox = document.getElementById("error-box");
+      errorBox.textContent = message;
+      errorBox.style.display = "block";
+    }
+
+    function togglePasswordVisibility() {
+      const passwordField = document.getElementById("password");
+      const toggleIcon = document.getElementById("toggle-password");
+      if (passwordField.type === "password") {
+        passwordField.type = "text";
+        toggleIcon.textContent = "🙈";
+      } else {
+        passwordField.type = "password";
+        toggleIcon.textContent = "👁️";
+      }
+    }
+
+    function showLoading() {
+      const button = document.querySelector(".btn");
+      button.disabled = true;
+      button.innerHTML = "Logging in... <span class='spinner'></span>";
+    }
+  </script>
+  <style>
+    .error-message {
+      color: red;
+      margin-bottom: 10px;
+      display: none;
+      font-size: 0.9em;
+      text-align: center;
+    }
+    .password-toggle {
+      margin-top: 5px;
+      cursor: pointer;
+      font-size: 0.9em;
+      color: #555;
+      user-select: none;
+    }
+    .spinner {
+      border: 2px solid #f3f3f3;
+      border-top: 2px solid #3498db;
+      border-radius: 50%;
+      width: 12px;
+      height: 12px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+     <div class="logo">
+       <span>SAFE</span><span class="green">SPACE</span>
+     </div>
+    <form class="form-box" onsubmit="validateLoginForm(event)">
+      <h2>Login</h2>
+      <div id="error-box" class="error-message"></div>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+        <div class="password-toggle" onclick="togglePasswordVisibility()">
+          <span id="toggle-password">👁️</span> Show Password
+        </div>
+      </div>
+      <button type="submit" class="btn">Login</button>
+      <p class="redirect">Don't have an account? <a href="register.html">Register here</a></p>
+    </form>
+  </div>
+</body>
+</html>

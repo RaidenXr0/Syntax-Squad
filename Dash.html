@@ -15,13 +15,21 @@
     </div>
     <nav>
       <ul>
-        <li><a href="#"><i class="icon"></i> Dashboard</a></li>
+        <li><a href="#"><i class="icon">📊</i> Dashboard</a></li>
         <li class="features-title">FEATURES</li>
-        <li><a href="#"><i class="icon"></i> UI Colours</a></li>
-        <li><a href="#"><i class="icon"></i> Counselors</a></li>
-        <li><a href="#"><i class="icon"></i> Community</a></li>
-        <li><a href="#"><i class="icon"></i> Subscription</a></li>
-        <li><a href="#"><i class="icon"></i> Resources</a></li>
+        <li><a href="#"><i class="icon">🎨</i> UI Colours</a></li>
+        <li><a href="#" class="counselors-link"><i class="icon">👨‍⚕️</i> Counselors</a></li>
+        <li><a href="#"><i class="icon">👥</i> Community</a></li>
+        <li><a href="#"><i class="icon">💳</i> Subscription</a></li>
+        <li><a href="#"><i class="icon">📚</i> Resources</a></li>
+        <li class="features-title">ACCOUNT</li>
+        <li><a href="#" class="settings-link"><i class="icon">⚙️</i> Settings</a></li>
+        <div class="settings-dropdown" id="settings-dropdown">
+          <a href="#">Change Username</a>
+          <a href="#">Change Password</a>
+          <a href="#">Privacy Settings</a>
+        </div>
+        <li><a href="login.html"><i class="icon">🚪</i> Log Out</a></li>
       </ul>
     </nav>
   </aside>
@@ -31,21 +39,42 @@
     <header class="main-header">
       <div class="menu-icon" id="menu-toggle">☰</div>
       <div class="user-info">
-        <i class="icon"></i> Syntax Squad
+        <span class="greeting">Hi, <span id="username">User</span></span>
+        <i class="icon">👤</i>
       </div>
     </header>
+
+    <div class="welcome-banner">
+      <h2>WELCOME TO <span class="logo">SAFE<span class="green">SPACE</span></span></h2>
+    </div>
 
     <div class="dashboard-body">
       <div class="breadcrumb">Home / Dashboard</div>
 
-      <h1>Dashboard</h1>
+      <section class="quick-actions">
+        <h2>Quick Actions</h2>
+        <div class="action-cards">
+          <div class="action-card">
+            <i class="icon">📅</i>
+            <h3>Book Session</h3>
+          </div>
+          <div class="action-card">
+            <i class="icon">📝</i>
+            <h3>Journal</h3>
+          </div>
+          <div class="action-card">
+            <i class="icon">🧘</i>
+            <h3>Meditation</h3>
+          </div>
+        </div>
+      </section>
 
       <section class="pending">
         <h2>Pending Appointments</h2>
         <p>No appointments pending</p>
       </section>
 
-      <section class="counselors">
+      <section class="counselors-section">
         <div class="counselors-header">
           <h2>Your Counselors</h2>
           <a href="#">See All...</a>
@@ -53,26 +82,20 @@
 
         <div class="counselor-list">
           <div class="counselor-card">
-            <div class="avatar"></div>
+            <div class="avatar">P</div>
             <h3>Prosperity Ajoke</h3>
             <p>General Counseling</p>
             <button class="message-btn">Message</button>
           </div>
           <div class="counselor-card">
-            <div class="avatar"></div>
+            <div class="avatar">J</div>
             <h3>John Mahma</h3>
             <p>Psychiatry</p>
             <button class="message-btn">Message</button>
           </div>
           <div class="counselor-card">
-            <div class="avatar"></div>
+            <div class="avatar">L</div>
             <h3>Lawrence Dominion</h3>
-            <p>General Counseling</p>
-            <button class="message-btn">Message</button>
-          </div>
-          <div class="counselor-card">
-            <div class="avatar"></div>
-            <h3>Lawrence D.</h3>
             <p>General Counseling</p>
             <button class="message-btn">Message</button>
           </div>
@@ -81,15 +104,32 @@
     </div>
   </div>
 
-  <!-- JavaScript -->
   <script>
+    // Menu Toggle
     const menuToggle = document.getElementById('menu-toggle');
     const sidebar = document.getElementById('sidebar');
-
+    
     menuToggle.addEventListener('click', () => {
       sidebar.classList.toggle('active');
     });
-  </script>
 
+    // Settings Dropdown
+    document.querySelector('.settings-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.getElementById('settings-dropdown').classList.toggle('show');
+    });
+
+    // Load username from localStorage (or use default)
+    document.addEventListener('DOMContentLoaded', () => {
+      const username = localStorage.getItem('username') || 'User';
+      document.getElementById('username').textContent = username;
+    });
+
+    // Counselors Section Toggle
+    document.querySelector('.counselors-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelector('.counselors-section').classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
